@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}All tasks{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">All Tasks</h1>
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mt-3">In Progress</h2>
+        <button class="btn btn-secondary" id="toggle-timer">Toggle Timer</button>
+    </div>
+    
+    <div class="row">
+        {% for task in in_progress %}
+        <div class="col-md-6 mb-3">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.task_title }}</h5>
+                    <p class="card-text">Description: {{ task.description }}</p>
+                    <p class="card-text">Due at: <strong>{{ task.deadline_date }}</strong></p>
+                    <p class="card-text">Time Passed: <span class="task-timer" data-task-id="{{ task.id }}">0:00</span></p>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url_for('edit', id=task.id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url_for('toggle_status', id=task.id) }}" class="btn btn-success">Complete</a>
+                        <a href="{{ url_for('delete', id=task.id) }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <h2 class="mt-4">Completed</h2>
+    <div class="row">
+        {% for task in completed %}
+        <div class="col-md-6 mb-3">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.module_code }}</h5>
+                    <p class="card-text">{{ task.task_title }}</p>
+                    <p class="card-text">Description: {{ task.description }}</p>
+                    <p class="card-text">Due at: <strong>{{ task.deadline_date }}</strong></p>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url_for('edit', id=task.id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url_for('toggle_status', id=task.id) }}" class="btn btn-warning">Un-finish</a>
+                        <a href="{{ url_for('delete', id=task.id) }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.getElementById('toggle-timer').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
