@@ -8,6 +8,7 @@ class Task(db.Model):
     task_description = db.Column(db.String(200), nullable = False)
     deadline_date = db.Column(db.DateTime, nullable = False)
     status = db.Column(db.Boolean, default = False)
+    progress = db.Columnn(db.Integer, default = False)
     colour = db.Column(db.Boolean, default = False)
 
 class Tag(db.Model):
