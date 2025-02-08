@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    background-color: #333;
+    color: #fff;
+}
+
+nav ul li {
+    padding: 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.assessment-list {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+
+.assessment {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+button {
+    margin-right: 10px;
+}
